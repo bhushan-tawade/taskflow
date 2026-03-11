@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE = "http://localhost:5000/api/tasks";
+const BASE = "https://taskflow-14cm.onrender.com/api/tasks";
 const headers = (token) => ({ Authorization: `Bearer ${token}` });
 
 export const fetchTasksAPI  = (token)           => axios.get(BASE, { headers: headers(token) });
