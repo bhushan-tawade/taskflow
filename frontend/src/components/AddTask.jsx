@@ -6,7 +6,7 @@ const AddTask = ({createTask,title, setTitle, description, setDescription, prior
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50  bg-black/40">
 
-                    <div className="glass p-6 rounded-lg w-1/2 ">
+                    <div className="bg-[#1e1e1e] border-2 border-dashed border-[#FFFF90]  p-6 rounded-lg w-1/2 ">
 
                         <h2 className="text-lg font-semibold mb-4 text-[#FFFF90]">Add New Task</h2>
                         <hr className="mb-3 border border-[#FFFF90]"/>

@@ -78,7 +78,7 @@ const TasksPage = () => {
     )
 
     return (
-        <div className="min-h-screen bg-[#1E1E1E] p-3 flex max-lg:flex-col max-lg:items-center justify-around gap-4">
+        <div className="h-[100vh] bg-[#1E1E1E] p-3 flex max-lg:flex-col max-lg:items-center justify-around gap-4">
 
             <div className="w-[95%] mx-auto">
 

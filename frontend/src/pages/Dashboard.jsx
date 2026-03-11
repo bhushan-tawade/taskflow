@@ -56,7 +56,7 @@ function Dashboard() {
     }
 
     return (
-        <div className="min-h-screen bg-[#1E1E1E] p-3 flex max-lg:flex-col max-lg:items-center justify-around gap-4">
+        <div className="h-[98vh] bg-[#1E1E1E] p-3 flex max-lg:flex-col max-lg:items-center justify-around gap-4">
 
             <div className="w-[95%] mx-auto">
 
@@ -69,7 +69,7 @@ function Dashboard() {
 
                 <hr className="border-white/20" />
 
-                <div className="px-4 flex items-end gap-1 text-white my-8">
+                <div className="px-4 flex items-end gap-1 text-white my-5">
                     <h1 className="text-7xl">March</h1>
                     <h2 className="text-4xl mt-2">, 2026</h2>
                 </div>
@@ -99,17 +99,12 @@ function Dashboard() {
                     <div className="flex justify-center items-center py-10">
                         <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500" />
                     </div>
-                ) : tasks.length === 0 ? (
-                    <div className="text-center py-10 text-gray-500">
-                        <h2 className="text-lg font-semibold">No tasks yet</h2>
-                        <p>Create your first task to get started 🚀</p>
-                    </div>
                 ) : null}
 
             </div>
 
             {/* RIGHT PANEL */}
-            <div className="w-[28%] max-lg:w-[95%] max-md:flex-col flex flex-col items-center justify-around gap-2 max-lg:flex-row">
+            <div className="w-[28%] max-lg:w-[95%] max-md:flex-col flex flex-col items-center justify-around gap-4 max-lg:flex-row">
                 <h1 className="mt-1 text-[#ffff90] text-5xl bricolage-grotesque max-lg:hidden">Taskflow</h1>
                 <div className="w-full max-lg:pt-10 bg-[#2E2E2E] rounded-4xl h-70 max-lg:h-90">
                     <TaskAnalytics
