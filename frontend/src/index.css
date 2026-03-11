@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+.bricolage-grotesque {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-optical-sizing: auto;
+
+}
+
+.react-calendar {
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.react-calendar__tile--active {
+  background: #9333ea;
+  border-radius: 50%;
+}
+
+.react-calendar__tile--now {
+  background: #e9d5ff;
+  border-radius: 50%;
+}
+
+
+.lexend {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+}
+
+/* Scrollbar width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #FFFF90;
+  border-radius: 10px;
+  width: 1px;
+}
+
+.glass {
+  /* From https://css.glass */
+  background: rgba(46, 46, 46, 0.49);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(13.6px);
+  -webkit-backdrop-filter: blur(13.6px);
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.dotted-bg {
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: radial-gradient(#57585c 0.5px, #1e1e1e 1.5px);
+  background-size: 20px 20px;
+  
+}
