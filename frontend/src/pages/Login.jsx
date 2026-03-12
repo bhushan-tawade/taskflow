@@ -1,17 +1,21 @@
 import { useState } from "react";
 import API from "../services/api";
 import { useNavigate, Link } from "react-router-dom";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
 
     e.preventDefault();
+    setLoading(true);
 
     try {
 
@@ -29,6 +33,8 @@ function Login() {
       alert("Login failed");
       console.log(error);
 
+    } finally {
+      setLoading(false);
     }
 
   };
@@ -74,27 +80,45 @@ function Login() {
         </div>
 
         {/* Password */}
+        {/* Password */}
         <div className="mb-6">
 
           <label className="text-white/70 text-sm">
             Password
           </label>
 
-          <input
-            type="password"
-            placeholder="Enter your password"
-            className="w-full mt-1 p-3 rounded-lg bg-[#2a2a2a] border border-white/10 text-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/40 transition"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="flex p-3  items-center justify-between bg-[#2a2a2a] border border-white/10 text-white rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500/40 transition">
+
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter your password"
+              className="w-full   outline-none "
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className=" text-white/40 hover:text-white text-sm"
+            >
+              {showPassword ? <AiOutlineEyeInvisible size={26} /> : <AiOutlineEye size={26} />}
+            </button>
+
+          </div>
 
         </div>
 
         {/* Login Button */}
         <button
-          className="w-full bg-yellow-400 hover:bg-yellow-300 text-black font-semibold py-3 rounded-lg transition duration-200 shadow-lg shadow-yellow-400/20"
+          disabled={loading}
+          className="w-full bg-yellow-400 hover:bg-yellow-300 disabled:opacity-70 disabled:cursor-not-allowed text-black font-semibold py-3 rounded-lg transition duration-200 shadow-lg shadow-yellow-400/20 flex items-center justify-center"
         >
-          Login
+          {loading ? (
+            <div className="h-5 w-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+          ) : (
+            "Login"
+          )}
         </button>
 
         {/* Register Link */}

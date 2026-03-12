@@ -27,10 +27,10 @@ function Dashboard() {
         totalTasks, completedTasks, pendingTasks, overdueTasks
     } = useTasks()
 
-    const [isModalOpen, setIsModalOpen]       = useState(false)
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const [isAddModalOpen, setIsAddModalOpen] = useState(false)
-    const [selectedTask, setSelectedTask]     = useState(null)
-    const [tableFilter, setTableFilter]       = useState("all")
+    const [selectedTask, setSelectedTask] = useState(null)
+    const [tableFilter, setTableFilter] = useState("all")
 
     // CHART DATA
     const completionRate = totalTasks === 0
@@ -39,7 +39,7 @@ function Dashboard() {
 
     const chartData = [
         { name: "Completed", value: completedTasks },
-        { name: "Pending",   value: pendingTasks   }
+        { name: "Pending", value: pendingTasks }
     ]
 
     const COLORS = ["#22c55e", "#ef4444"]
@@ -47,13 +47,18 @@ function Dashboard() {
     // TABLE FILTER
     const tableFilteredTasks = tasks.filter(task => {
         if (tableFilter === "done") return task.is_done
-        if (tableFilter === "due")  return task.due_date && new Date(task.due_date) < new Date() && !task.is_done
+        if (tableFilter === "due") return task.due_date && new Date(task.due_date) < new Date() && !task.is_done
         return true
     })
 
     const handleUpdateTask = () => {
         updateTask(selectedTask, () => setIsModalOpen(false))
     }
+
+    const now = new Date();
+
+    const month = now.toLocaleString("default", { month: "long" });
+    const year = now.getFullYear();
 
     return (
         <div className="h-[98vh] bg-[#1E1E1E] p-3 flex max-lg:flex-col max-lg:items-center justify-around gap-4">
@@ -70,8 +75,8 @@ function Dashboard() {
                 <hr className="border-white/20" />
 
                 <div className="px-4 flex items-end gap-1 text-white my-5">
-                    <h1 className="text-7xl">March</h1>
-                    <h2 className="text-4xl mt-2">, 2026</h2>
+                    <h1 className="text-7xl">{month}</h1>
+                    <h2 className="text-4xl mt-2">, {year}</h2>
                 </div>
 
                 {/* TASK STATISTICS */}

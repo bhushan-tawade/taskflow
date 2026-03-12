@@ -7,7 +7,7 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 const TaskStat = ({ totalTasks, completedTasks, pendingTasks, overdueTasks }) => {
 
     return (
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6 mt-8">
 
             {/* Active Tasks */}
             <div className='bg-[#634ca6] rounded-2xl lg:hover:-translate-x-1 lg:hover:translate-y-1 transition-transform duration-300 ease-out'>

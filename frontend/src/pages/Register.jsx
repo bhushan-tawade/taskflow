@@ -1,12 +1,14 @@
 import { useState } from "react";
 import API from "../services/api";
 import { useNavigate, Link } from "react-router-dom";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 function Register() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -93,20 +95,32 @@ function Register() {
 
         {/* Password */}
         <div className="mb-6">
-
-          <label className="text-white/70 text-sm">
-            Password
-          </label>
-
-          <input
-            type="password"
-            placeholder="Enter your password"
-            className="w-full mt-1 p-3 rounded-lg bg-[#2a2a2a] border border-white/10 text-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/40 transition"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-        </div>
+        
+                  <label className="text-white/70 text-sm">
+                    Password
+                  </label>
+        
+                  <div className="flex p-3  items-center justify-between bg-[#2a2a2a] border border-white/10 text-white rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500/40 transition">
+        
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Enter your password"
+                      className="w-full   outline-none "
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+        
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className=" text-white/40 hover:text-white text-sm"
+                    >
+                      {showPassword ? <AiOutlineEyeInvisible size={26}/> : <AiOutlineEye size={26}/>}
+                    </button>
+        
+                  </div>
+        
+                </div>
 
         {/* Register Button */}
         <button

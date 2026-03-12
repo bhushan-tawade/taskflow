@@ -29,33 +29,33 @@ const TasksPage = () => {
         totalTasks, recentTasks
     } = useTasks()
 
-    const [view, setView]                 = useState('kanban')
+    const [view, setView] = useState('kanban')
     const [isAddModalOpen, setIsAddModalOpen] = useState(false)
     const [selectedTask, setSelectedTask] = useState(null)
-    const [tableFilter, setTableFilter]   = useState("all")
+    const [tableFilter, setTableFilter] = useState("all")
 
     // SUMMARY COUNTS
-    const completedTasks  = tasks.filter(t => t.status === "completed").length
+    const completedTasks = tasks.filter(t => t.status === "completed").length
     const inProgressCount = tasks.filter(t => t.status === "in_progress").length
-    const pendingCount    = tasks.filter(t => t.status === "todo").length
-    const overdueTasks    = tasks.filter(t =>
+    const pendingCount = tasks.filter(t => t.status === "todo").length
+    const overdueTasks = tasks.filter(t =>
         t.status === "todo" && t.due_date && new Date(t.due_date) < new Date()
     ).length
 
     // KANBAN COLUMNS
-    const completedTaskList  = tasks.filter(t => t.status === "completed")
+    const completedTaskList = tasks.filter(t => t.status === "completed")
     const inProgressTaskList = tasks.filter(t => t.status === "in_progress")
-    const pendingTaskList    = tasks.filter(t =>
+    const pendingTaskList = tasks.filter(t =>
         t.status === "todo" && (!t.due_date || new Date(t.due_date) >= new Date())
     )
-    const overdueTaskList    = tasks.filter(t =>
+    const overdueTaskList = tasks.filter(t =>
         t.status === "todo" && t.due_date && new Date(t.due_date) < new Date()
     )
 
     // TABLE FILTER
     const tableFilteredTasks = tasks.filter(task => {
         if (tableFilter === "done") return task.is_done
-        if (tableFilter === "due")  return task.due_date && new Date(task.due_date) < new Date() && !task.is_done
+        if (tableFilter === "due") return task.due_date && new Date(task.due_date) < new Date() && !task.is_done
         return true
     })
 
@@ -127,10 +127,10 @@ const TasksPage = () => {
                                 {/* SUMMARY CARDS */}
                                 <div className='grid grid-cols-4 gap-8 text-center mb-6 min-w-[1000px]'>
                                     {[
-                                        { label: "Completed",  count: completedTasks,  color: "green"  },
+                                        { label: "Completed", count: completedTasks, color: "green" },
                                         { label: "In Progress", count: inProgressCount, color: "yellow" },
-                                        { label: "Pending",    count: pendingCount,    color: "cyan"   },
-                                        { label: "Overdue",    count: overdueTasks,    color: "red"    },
+                                        { label: "Pending", count: pendingCount, color: "cyan" },
+                                        { label: "Overdue", count: overdueTasks, color: "red" },
                                     ].map(({ label, count, color }) => (
                                         <div key={label} className={`bg-white rounded-xl border-t-6 border-${color}-500 text-${color}-600 text-start px-4 py-4 flex items-center justify-between text-md font-semibold`}>
                                             {label}
@@ -141,10 +141,10 @@ const TasksPage = () => {
 
                                 {/* COLUMNS */}
                                 <div className='grid grid-cols-4 gap-8 items-start h-[59vh] overflow-y-scroll no-scrollbar min-w-[1000px]'>
-                                    {kanbanColumn(completedTaskList,  'bg-green-200')}
+                                    {kanbanColumn(completedTaskList, 'bg-green-200')}
                                     {kanbanColumn(inProgressTaskList, 'bg-yellow-200')}
-                                    {kanbanColumn(pendingTaskList,    'bg-cyan-100')}
-                                    {kanbanColumn(overdueTaskList,    'bg-red-200')}
+                                    {kanbanColumn(pendingTaskList, 'bg-cyan-100')}
+                                    {kanbanColumn(overdueTaskList, 'bg-red-200')}
                                 </div>
 
                             </div>
