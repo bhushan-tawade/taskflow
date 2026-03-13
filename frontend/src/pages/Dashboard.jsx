@@ -117,7 +117,7 @@ function Dashboard() {
                         tableFilter={tableFilter}
                         setTableFilter={setTableFilter}
                         openAddModal={() => setIsAddModalOpen(true)}
-                        bodyHeight="h-57"
+                        bodyHeight="h-50"
                     />
                 </div>
 
