@@ -26,9 +26,9 @@ const ChartBuilder = ({ onCreate }) => {
 
     return (
 
-        <div className="p-6 bg-[#222] rounded-xl flex flex-col gap-4">
+        <div className="p-6 bg-white border dark:border-0 dark:bg-[#222] rounded-xl flex flex-col gap-4">
 
-            <h2 className="text-white text-xl font-semibold">
+            <h2 className="dark:text-white text-[#10162F] text-xl font-semibold">
                 Create Chart
             </h2>
 
@@ -40,7 +40,7 @@ const ChartBuilder = ({ onCreate }) => {
                 placeholder="Chart Title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="p-2 rounded bg-[#333] text-white"
+                className="p-2 rounded dark:bg-[#333] text-black border dark:border-0 dark:text-white"
             />
 
 
@@ -49,7 +49,7 @@ const ChartBuilder = ({ onCreate }) => {
             <select
                 value={chartType}
                 onChange={(e) => setChartType(e.target.value)}
-                className="p-2 rounded bg-[#333] text-white"
+                className="p-2 rounded dark:bg-[#333] text-black border dark:border-0 dark:text-white"
             >
 
                 <option value="">Select Chart Type</option>
@@ -77,7 +77,7 @@ const ChartBuilder = ({ onCreate }) => {
                     if (value === "completion") setXAxis("status")
 
                 }}
-                className="p-2 rounded bg-[#333] text-white"
+                className="p-2 rounded dark:bg-[#333] text-black border dark:border-0 dark:text-white"
             >
 
                 <option value="">Select Dataset</option>
@@ -105,7 +105,7 @@ const ChartBuilder = ({ onCreate }) => {
 
             <button
                 onClick={handleSubmit}
-                className="bg-green-500 hover:bg-green-600 px-4 py-2 mt-2 rounded text-white"
+                className="bg-green-500 hover:bg-green-600 border border-black dark:border-0 px-4 py-2 mt-2 rounded text-white"
             >
 
                 Create Chart

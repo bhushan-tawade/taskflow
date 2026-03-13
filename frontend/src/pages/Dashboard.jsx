@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { TbHome } from "react-icons/tb"
 import { RiArrowRightSLine } from "react-icons/ri"
 import { toast } from "react-toastify"
@@ -53,7 +53,9 @@ function Dashboard() {
 
     const handleUpdateTask = () => {
         updateTask(selectedTask, () => setIsModalOpen(false))
+        
     }
+
 
     const now = new Date();
 
@@ -61,22 +63,27 @@ function Dashboard() {
     const year = now.getFullYear();
 
     return (
-        <div className="h-[98vh] bg-[#1E1E1E] p-3 flex max-lg:flex-col max-lg:items-center justify-around gap-4">
+        <div className="h-[98vh]  bg-[#FFF0E5] dark:bg-[#1E1E1E] p-3 flex max-lg:flex-col max-lg:items-center justify-around gap-4">
 
             <div className="w-[95%] mx-auto">
 
                 {/* BREADCRUMB */}
-                <div className="w-full flex items-center justify-start px-4 text-white/70 gap-2 h-15">
+                <div className="w-full flex items-center justify-start px-4 text-[#10162F] font-semibold dark:text-white/70 gap-2 h-15">
                     <TbHome size={26} />
                     <RiArrowRightSLine size={26} />
                     <p className="text-lg">Dashboard</p>
                 </div>
 
-                <hr className="border-white/20" />
+                <hr className="dark:border-white/20" />
 
-                <div className="px-4 flex items-end gap-1 text-white my-5">
-                    <h1 className="text-7xl">{month}</h1>
-                    <h2 className="text-4xl mt-2">, {year}</h2>
+                <div className="px-4 flex items-end gap-1 text-[#10162F] font-semibold dark:text-white my-5">
+                    <h1 className="text-7xl">
+                       {month}
+                        </h1>
+                        <h2>
+                            {year}
+                        </h2>
+                    
                 </div>
 
                 {/* TASK STATISTICS */}
@@ -88,7 +95,7 @@ function Dashboard() {
                 />
 
                 {/* TASK TABLE */}
-                <div className="bg-[#2E2E2E] w-full rounded-4xl p-4">
+                <div className="bg-[#FFFFFF] border dark:bg-[#2E2E2E]  w-full rounded-4xl p-4">
                     <TaskTable
                         tasks={tableFilteredTasks}
                         toggleComplete={toggleComplete}
@@ -110,15 +117,15 @@ function Dashboard() {
 
             {/* RIGHT PANEL */}
             <div className="w-[28%] max-lg:w-[95%] max-md:flex-col flex flex-col items-center justify-around gap-4 max-lg:flex-row">
-                <h1 className="mt-1 text-[#ffff90] text-5xl bricolage-grotesque max-lg:hidden">Taskflow</h1>
-                <div className="w-full max-lg:pt-10 bg-[#2E2E2E] rounded-4xl h-70 max-lg:h-90">
+                <h1 className="mt-1 text-[#10162F] dark:text-[#ffff90] text-5xl bricolage-grotesque max-lg:hidden">Taskflow</h1>
+                <div className="w-full max-lg:pt-10 bg-[#FFFFFF] border dark:bg-[#2E2E2E] rounded-4xl h-70 max-lg:h-90">
                     <TaskAnalytics
                         completionRate={completionRate}
                         chartData={chartData}
                         COLORS={COLORS}
                     />
                 </div>
-                <div className="w-full p-4 bg-[#2E2E2E] rounded-4xl h-91">
+                <div className="w-full p-4 bg-[#FFFFFF] border dark:bg-[#2E2E2E] rounded-4xl h-91">
                     <MyCalendar />
                 </div>
             </div>

@@ -78,7 +78,7 @@ const TaskCard = ({ task, toggleComplete, deleteTask, handleEditClick, toggleInP
 
             <button
                 onClick={() => toggleComplete(task)}
-                className={`w-full mt-3 font-semibold shadow-md cursor-pointer bg-white rounded-xl p-2 transition hover:scale-102 ${task.status != 'completed' ? 'text-green-400' : 'text-red-400'}`}
+                className={`w-full mt-3 font-semibold shadow-md cursor-pointer border border-black dark:border-0 bg-white rounded-xl p-2 transition hover:scale-102 ${task.status != 'completed' ? 'text-green-400' : 'text-red-400'}`}
             >
                 {task.status != 'completed' ? 'Mark as done' : 'Mark as Undone'}
             </button>
@@ -88,7 +88,7 @@ const TaskCard = ({ task, toggleComplete, deleteTask, handleEditClick, toggleInP
             
             <button
                 onClick={() => toggleInProgress(task)}
-                className={`w-full mt-3 font-semibold shadow-md cursor-pointer bg-white rounded-xl p-2 transition hover:scale-102 ${task.status != 'completed' ? 'text-green-400' : 'text-red-400'}`}
+                className={`w-full mt-3 font-semibold shadow-md cursor-pointer border border-black dark:border-0 bg-white rounded-xl p-2 transition hover:scale-102 ${task.status != 'completed' ? 'text-green-400' : 'text-red-400'}`}
             >
                 Mark in Progress
             </button>)

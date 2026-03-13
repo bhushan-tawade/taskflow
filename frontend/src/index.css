@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 .bricolage-grotesque {
   font-family: "Bricolage Grotesque", sans-serif;
   font-optical-sizing: auto;
@@ -64,10 +66,20 @@
   scrollbar-width: none;
 }
 
-.dotted-bg {
+@media (prefers-color-scheme: dark) {
+.dotted-bg-dark {
   background-color: #e5e5f7;
   opacity: 0.8;
   background-image: radial-gradient(#57585c 0.5px, #1e1e1e 1.5px);
   background-size: 20px 20px;
-  
+}
+}
+
+.dotted-bg-light {
+  background-color: #ffffff;
+  opacity: 0.8;
+  background-image: radial-gradient(#10162F 1.5px, #ffffff 1.5px);
+  background-size: 20px 20px;
+  border: solid 1px;
+  border-radius: 1rem;
 }

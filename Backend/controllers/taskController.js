@@ -7,7 +7,7 @@ const createTask = async (req, res) => {
         const { title, description, category, priority, due_date } = req.body;
 
         const task = new Task({
-            user: req.user,   // req.user already contains user id
+            user: req.user.id,   // req.user.id already contains user id
             title,
             description,
             category,
@@ -34,7 +34,7 @@ const getTasks = async (req, res) => {
 
         const { status, category } = req.query;
 
-        let filter = { user: req.user };
+        let filter = { user: req.user.id };
 
         if (category) {
             filter.category = category;
@@ -127,7 +127,7 @@ const updateTask = async (req, res) => {
             return res.status(404).json({ message: "Task not found" });
         }
 
-        if (task.user.toString() !== req.user) {
+        if (task.user.toString() !== req.user.id) {
             return res.status(401).json({ message: "Not authorized" });
         }
 

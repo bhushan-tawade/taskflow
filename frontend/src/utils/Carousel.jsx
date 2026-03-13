@@ -51,7 +51,7 @@ function CarouselItem({ item, index, itemWidth, round, trackItemOffset, x, trans
             key={`${item?.id ?? index}-${index}`}
             className={`relative shrink-0 flex flex-col ${round
                 ? 'items-center justify-center text-center bg-[#060010] border-0'
-                : 'items-start justify-between bg-[#222] border border-[#222] rounded-[12px]'
+                : 'items-start justify-between bg-white dark:bg-[#222] border border-[#222] rounded-[12px]'
                 } overflow-hidden cursor-grab active:cursor-grabbing`}
             style={{
                 width: itemWidth,
@@ -89,8 +89,8 @@ function CarouselItem({ item, index, itemWidth, round, trackItemOffset, x, trans
                 </div>
             </div>
             <div className="p-5">
-                <div className="mb-1 font-black text-lg text-white">{item.title}</div>
-                <p className="text-sm text-white">{item.description}</p>
+                <div className="mb-1 font-black text-lg dark:text-white">{item.title}</div>
+                <p className="text-sm dark:text-white">{item.description}</p>
                 {item.due_date && (<p className="text-xs text-red-400 mt-1 font-semibold">Due Date: {new Date(item.due_date).toLocaleDateString("en-GB")}</p>)}
             </div>
         </motion.div>
@@ -278,9 +278,9 @@ export default function Carousel({
                             key={index}
                             className={`h-2 w-2 rounded-full cursor-pointer transition-colors duration-150 ${activeIndex === index
                                 ?
-                                'bg-white'
+                                'bg-black dark:bg-white'
                                 :
-                                'bg-[#555]'
+                                'bg-black/50 dark:bg-[#555]'
                                 }`}
                             animate={{
                                 scale: activeIndex === index ? 1.2 : 1

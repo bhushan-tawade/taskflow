@@ -80,7 +80,6 @@ function Login() {
         </div>
 
         {/* Password */}
-        {/* Password */}
         <div className="mb-6">
 
           <label className="text-white/70 text-sm">

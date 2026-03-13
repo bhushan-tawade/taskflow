@@ -9,7 +9,7 @@ const SortTask = ({ categoryFilter, setCategoryFilter, priorityFilter, setPriori
                     <select
                         value={categoryFilter}
                         onChange={(e) => setCategoryFilter(e.target.value)}
-                        className="border p-2 border-[#FFF07A] text-[#FFF07A] rounded-xl outline-0"
+                        className="border p-2 border-[#10162F] dark:border-[#FFF07A] text-[#10162F] dark:text-[#FFF07A] rounded-xl outline-0"
                     >
                         <option className='text-black bg-[#FFF07A]' value="all">All Categories</option>
                         <option className='text-black bg-[#FFF07A]' value="work">Work</option>
@@ -20,7 +20,7 @@ const SortTask = ({ categoryFilter, setCategoryFilter, priorityFilter, setPriori
                     <select
                         value={priorityFilter}
                         onChange={(e) => setPriorityFilter(e.target.value)}
-                        className="border p-2 border-[#FFF07A] text-[#FFF07A] rounded-xl outline-0"
+                        className="border p-2 border-[#10162F] dark:border-[#FFF07A] text-[#10162F] dark:text-[#FFF07A] rounded-xl outline-0"
                     >
                         <option className='text-black bg-[#FFF07A]' value="all">All Priority</option>
                         <option className='text-black bg-[#FFF07A]' value="high">High</option>
@@ -31,7 +31,7 @@ const SortTask = ({ categoryFilter, setCategoryFilter, priorityFilter, setPriori
                     <select
                         value={sortBy}
                         onChange={(e) => setSortBy(e.target.value)}
-                        className="border p-2 border-[#FFF07A] text-[#FFF07A] rounded-xl outline-0"
+                        className="border p-2 border-[#10162F] dark:border-[#FFF07A] text-[#10162F] dark:text-[#FFF07A] rounded-xl outline-0"
                     >
                         <option className='text-black bg-[#FFF07A]' value="newest">Newest</option>
                         <option className='text-black bg-[#FFF07A]' value="oldest">Oldest</option>

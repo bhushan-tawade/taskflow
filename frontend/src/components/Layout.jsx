@@ -8,7 +8,7 @@ function Layout({ children }) {
     };
 
     return (
-        <div className="flex h-screen bg-[#1E1E1E] overflow-hidden">
+        <div className="flex h-screen bg-[#FFF0E5] dark:bg-[#1E1E1E]  overflow-hidden">
 
             {/* Sidebar */}
             <Navbar logout={logout} />

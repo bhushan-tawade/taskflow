@@ -13,7 +13,7 @@ import ChartRenderer from "../components/ChartRenderer"
 import ChartBuilder from "../components/ChartBuilder"
 import { MdOutlineClose } from "react-icons/md"
 import { AiOutlineDelete } from "react-icons/ai"
-import  useTasks  from "../hooks/useTasks"
+import useTasks from "../hooks/useTasks"
 import useCharts from "../hooks/useCharts"
 import { getDataset } from "../services/analyticsHelpers"
 
@@ -26,31 +26,31 @@ const AnalyticsPage = () => {
         resetDashboard, handleLayoutChange } = useCharts();
     const [showBuilder, setShowBuilder] = useState(false);
 
-      // ← add these back
-  const TOTAL_ROWS = 6;
-  const GRID_HEIGHT = Math.max(window.innerHeight - 200, 500);
-  const ROW_HEIGHT = GRID_HEIGHT / TOTAL_ROWS;
+    // ← add these back
+    const TOTAL_ROWS = 6;
+    const GRID_HEIGHT = Math.max(window.innerHeight - 200, 500);
+    const ROW_HEIGHT = GRID_HEIGHT / TOTAL_ROWS;
 
 
     return (
 
-        <div className="min-h-screen flex flex-col bg-[#1e1e1e] overflow-hidden p-3">
+        <div className="min-h-screen flex flex-col dark:bg-[#1e1e1e] overflow-hidden p-3">
 
             {/* Breadcrumb */}
-            <div className="w-full flex items-center px-2 sm:px-4 text-white/70 gap-2 h-12 sm:h-14">
+            <div className="w-full flex items-center px-2 sm:px-4 dark:text-white/70 gap-2 h-12 sm:h-14">
                 <TbHome size={22} />
                 <RiArrowRightSLine size={22} />
                 <p className="text-base sm:text-lg">Analytics</p>
             </div>
 
-            <hr className="border-white/20 mb-4" />
+            <hr className="dark:border-white/20 mb-4" />
 
 
             {/* Buttons */}
             <div className="flex flex-wrap gap-2 ml-2 sm:ml-3">
 
                 <button
-                    className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded text-white text-sm font-semibold"
+                    className="px-4 py-2 border border-black dark:border-0 bg-blue-500 hover:bg-blue-600 rounded text-white text-sm font-semibold"
                     onClick={() => setShowBuilder(true)}
                 >
                     Create Chart
@@ -58,7 +58,7 @@ const AnalyticsPage = () => {
 
                 <button
                     onClick={resetDashboard}
-                    className="px-4 py-2 bg-red-500 hover:bg-red-600 rounded text-white text-sm font-semibold"
+                    className="px-4 py-2 border border-black dark:border-0 bg-red-500 hover:bg-red-600 rounded text-white text-sm font-semibold"
                 >
                     Reset Dashboard
                 </button>
@@ -68,13 +68,14 @@ const AnalyticsPage = () => {
 
 
             {/* Dashboard */}
-            <div className="flex-1 px-2 mt-3 overflow-auto relative dotted-bg">
+            <div className="flex-1 p-2  mt-3 overflow-auto relative bg-white bg-[radial-gradient(#10162F_1.5px,#ffffff_1.5px)] bg-[size:20px_20px] border rounded-xl
+                            dark:border-0 dark:bg-[#1e1e1e] dark:bg-[radial-gradient(#57585c_0.5px,#1e1e1e_1.5px)] dark:bg-[size:20px_20px]">
 
                 {charts.length === 0 && (
 
-                    <div className="text-white/40  flex items-center justify-center h-[75vh] text-lg">
+                    <p className="text-[#155DFC] font-bold dark:font-normal dark:text-white/40 flex items-center justify-center  h-[80vh] text-lg">
                         No charts created yet
-                    </div>
+                    </p>
 
                 )}
 
@@ -163,14 +164,14 @@ const AnalyticsPage = () => {
             {/* Chart Builder Modal */}
             {showBuilder && (
 
-                <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+                <div className="fixed inset-0 bg-white/60 dark:bg-black/60 flex items-center justify-center z-50">
 
-                    <div className="bg-[#1f1f1f] p-4 sm:p-6 rounded-xl w-[95%] sm:w-[420px]">
+                    <div className="bg-[#FFFAE5] border dark:border-0 dark:bg-[#1f1f1f] p-4 sm:p-6 rounded-xl w-[95%] sm:w-[420px]">
 
                         <div className="flex justify-end">
 
                             <button
-                                className="text-red-400 hover:text-red-500"
+                                className="text-red-400 hover:text-red-500 cursor-pointer pb-4"
                                 onClick={() => setShowBuilder(false)}
                             >
                                 <MdOutlineClose size={22} />

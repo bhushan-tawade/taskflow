@@ -10,8 +10,8 @@ const TaskStat = ({ totalTasks, completedTasks, pendingTasks, overdueTasks }) =>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6 mt-8">
 
             {/* Active Tasks */}
-            <div className='bg-[#634ca6] rounded-2xl lg:hover:-translate-x-1 lg:hover:translate-y-1 transition-transform duration-300 ease-out'>
-                <div className="relative bg-[#A27FFF] p-6 md:p-8 lg:p-10 rounded-2xl shadow text-center overflow-hidden lexend
+            <div className='bg-[#634ca6] hover:border rounded-2xl lg:hover:-translate-x-1 lg:hover:translate-y-1 transition-transform duration-300 ease-out'>
+                <div className="relative bg-[#A27FFF] border p-6 md:p-8 lg:p-10 rounded-2xl shadow text-center overflow-hidden lexend
                 lg:hover:translate-x-2 lg:hover:-translate-y-2 transition-transform duration-300 ease-out">
 
                     <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#29213f]">
@@ -29,8 +29,8 @@ const TaskStat = ({ totalTasks, completedTasks, pendingTasks, overdueTasks }) =>
             </div>
 
             {/* Completed */}
-            <div className='bg-[#469d5a] rounded-2xl lg:hover:-translate-x-1 lg:hover:translate-y-1 transition-transform duration-300 ease-out'>
-                <div className="relative bg-[#83FF9F] p-6 md:p-8 lg:p-10 rounded-2xl shadow text-center overflow-hidden lexend
+            <div className='bg-[#469d5a] hover:border rounded-2xl lg:hover:-translate-x-1 lg:hover:translate-y-1 transition-transform duration-300 ease-out'>
+                <div className="relative bg-[#83FF9F] border p-6 md:p-8 lg:p-10 rounded-2xl shadow text-center overflow-hidden lexend
                 lg:hover:translate-x-2 lg:hover:-translate-y-2 transition-transform duration-300 ease-out">
 
                     <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-green-600">
@@ -48,8 +48,8 @@ const TaskStat = ({ totalTasks, completedTasks, pendingTasks, overdueTasks }) =>
             </div>
 
             {/* Pending */}
-            <div className='bg-[#338599] rounded-2xl lg:hover:-translate-x-1 lg:hover:translate-y-1 transition-transform duration-300 ease-out'>
-                <div className="relative bg-[#6CE0FF] p-6 md:p-8 lg:p-10 rounded-2xl shadow text-center overflow-hidden lexend
+            <div className='bg-[#338599] hover:border rounded-2xl lg:hover:-translate-x-1 lg:hover:translate-y-1 transition-transform duration-300 ease-out'>
+                <div className="relative bg-[#6CE0FF] border p-6 md:p-8 lg:p-10 rounded-2xl shadow text-center overflow-hidden lexend
                 lg:hover:translate-x-2 lg:hover:-translate-y-2 transition-transform duration-300 ease-out">
 
                     <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-cyan-600">
@@ -67,8 +67,8 @@ const TaskStat = ({ totalTasks, completedTasks, pendingTasks, overdueTasks }) =>
             </div>
 
             {/* Overdue */}
-            <div className='bg-[#a23a3a] rounded-2xl lg:hover:-translate-x-1 lg:hover:translate-y-1 transition-transform duration-300 ease-out'>
-                <div className="relative bg-[#FF6D6D] p-6 md:p-8 lg:p-10 rounded-2xl shadow text-center overflow-hidden lexend
+            <div className='bg-[#a23a3a] hover:border rounded-2xl lg:hover:-translate-x-1 lg:hover:translate-y-1 transition-transform duration-300 ease-out'>
+                <div className="relative bg-[#FF6D6D] border p-6 md:p-8 lg:p-10 rounded-2xl shadow text-center overflow-hidden lexend
                 lg:hover:translate-x-2 lg:hover:-translate-y-2 transition-transform duration-300 ease-out">
 
                     <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-red-600">

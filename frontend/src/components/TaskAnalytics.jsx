@@ -6,7 +6,7 @@ const TaskAnalytics = ({ completionRate, chartData, COLORS }) => {
     <div className="p-4 relative  mb-6 rounded-xl">
 
       {/* Center Percentage */}
-      <p className="absolute text-5xl text-[#B0B0B0] font-bold left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <p className="absolute text-5xl text-[#10162F] dark:text-[#B0B0B0] font-bold left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
         {completionRate}%
       </p>
 

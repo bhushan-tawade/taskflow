@@ -60,7 +60,7 @@ const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAdd
 
 
     return (
-        <div className='bg-[#2E2E2E]'>
+        <div className='dark:bg-[#2E2E2E]'>
 
             {/* HEADER */}
             <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-3'>
@@ -68,11 +68,11 @@ const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAdd
                     <div className='flex items-center gap-4'>
 
 
-                        <div className='p-2 border rounded-2xl border-white/20 text-white/40 w-fit hover:text-amber-200 hover:border-amber-200'>
+                        <div className='p-2 border rounded-2xl dark:border-white/20 dark:text-white/40 w-fit  hover:text-[#FFD300] dark:hover:text-amber-200 hover:border-[#FFD300] dark:hover:border-amber-200'>
                             <CgFileDocument size={24} />
                         </div>
 
-                        <h1 className='text-lg font-semibold text-[#FFFF90]'>
+                        <h1 className='text-lg font-semibold dark:text-[#FFFF90]'>
                             Task List
                         </h1>
 
@@ -82,13 +82,13 @@ const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAdd
                 </Link>
 
                 {/* Sorting */}
-                <div className='bg-black/20 rounded-2xl px-4 flex flex-wrap gap-4 text-white/30'>
+                <div className='bg-[#FFFAE5] border border-black dark:border-0 dark:bg-black/20 rounded-2xl px-4 flex flex-wrap gap-4 text-black/50 dark:text-white/30'>
 
                     <button
                         onClick={() => setTableFilter("all")}
                         className={`py-2 px-2 border-b-2 cursor-pointer ${tableFilter === "all"
-                            ? "text-[#FFFF90] border-[#FFFF90]"
-                            : "border-transparent hover:border-white/40"
+                            ? "text-[#10162F]  dark:text-[#FFFF90] dark:border-[#FFFF90]"
+                            : "border-transparent dark:hover:border-white/40"
                             }`}
                     >
                         All Tasks
@@ -97,7 +97,7 @@ const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAdd
                     <button
                         onClick={() => setTableFilter("done")}
                         className={`py-2 px-2 border-b-2 cursor-pointer ${tableFilter === "done"
-                            ? "text-[#FFFF90] border-[#FFFF90]"
+                            ? "text-[#10162F] dark:text-[#FFFF90] dark:border-[#FFFF90]"
                             : "border-transparent hover:border-white/40"
                             }`}
                     >
@@ -107,7 +107,7 @@ const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAdd
                     <button
                         onClick={() => setTableFilter("due")}
                         className={`py-2 px-2 border-b-2 cursor-pointer ${tableFilter === "due"
-                            ? "text-[#FFFF90] border-[#FFFF90]"
+                            ? "text-[#10162F]  dark:text-[#FFFF90] dark:border-[#FFFF90]"
                             : "border-transparent hover:border-white/40"
                             }`}
                     >
@@ -122,7 +122,7 @@ const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAdd
 
                 <button
                     onClick={openAddModal}
-                    className='bg-[#FFFF90] px-4 py-2 rounded-xl font-semibold hover:scale-105 transition w-full lg:w-auto'
+                    className='bg-[#FFD300] border dark:border-0 dark:bg-[#FFFF90] px-4 py-2 rounded-xl font-semibold hover:scale-105 transition w-full lg:w-auto'
                 >    Add Task
                 </button>
             </div>
@@ -133,9 +133,9 @@ const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAdd
             <div className="mt-0 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
 
                 {/* HEADER TABLE */}
-                <table className="max-[1024px]:w-[800px] w-[65vw] sticky top-0 bg-[#2E2E2E] overflow-x-scroll ">
+                <table className="max-[1024px]:w-[800px] w-[65vw] sticky top-0 rounded-t-lg bg-[#10162F]  dark:bg-[#2E2E2E] overflow-x-scroll ">
                     <thead className="border-b border-white/10">
-                        <tr className="text-white/50 text-left">
+                        <tr className="text-white dark:text-white/50 text-left">
 
                             <th className="px-4 py-2 w-10">
                                 <MdOutlineCheckBoxOutlineBlank size={16} />
@@ -183,7 +183,7 @@ const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAdd
                 {/* SCROLLABLE BODY */}
                 <div className={`${bodyHeight} `}>
 
-                    <table className=" max-[1024px]:w-[800px] w-[65vw] overflow-x-scroll table-fixed">
+                    <table className=" max-[1024px]:w-[800px] border dark:border-0 w-[65vw] overflow-x-scroll table-fixed">
                         <tbody className="text-white">
 
                             {sortedTasks.length === 0 ? (
@@ -200,7 +200,7 @@ const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAdd
 
                                     <tr
                                         key={task._id}
-                                        className="border-b border-white/20"
+                                        className="border-b border-[#10162F] text-black dark:text-white dark:border-white/20"
                                     >
 
                                         {/* CHECKBOX */}
