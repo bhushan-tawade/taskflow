@@ -116,6 +116,7 @@ function Dashboard() {
                         toggleComplete={toggleComplete}
                         tableFilter={tableFilter}
                         setTableFilter={setTableFilter}
+                        deleteTask={deleteTask}
                         openAddModal={() => setIsAddModalOpen(true)}
                         bodyHeight="h-50"
                     />

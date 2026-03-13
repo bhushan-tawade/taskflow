@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-const ChartBuilder = ({ onCreate }) => {
+const ChartBuilder = ({setShowBuilder, onCreate }) => {
 
     const [title, setTitle] = useState("")
     const [chartType, setChartType] = useState("")
@@ -21,6 +21,8 @@ const ChartBuilder = ({ onCreate }) => {
             xAxis,
             yAxis: "count" // default value
         })
+
+        setShowBuilder(false)
 
     }
 

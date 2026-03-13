@@ -196,10 +196,12 @@ const TasksPage = () => {
                                 <TaskTable
                                     tasks={tableFilteredTasks}
                                     toggleComplete={toggleComplete}
+                                    deleteTask={deleteTask}
                                     tableFilter={tableFilter}
                                     setTableFilter={setTableFilter}
                                     openAddModal={() => setIsAddModalOpen(true)}
                                     bodyHeight="h-[27vh] lg:h-[55vh]"
+
                                 />
                             </div>
                         ) : (

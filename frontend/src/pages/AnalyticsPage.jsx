@@ -118,13 +118,13 @@ const AnalyticsPage = () => {
 
                             <div
                                 key={chart.i}
-                                className="w-full h-full bg-[#2a2a2a] rounded-xl p-3 sm:p-4 shadow-md flex flex-col"
+                                className="w-full h-full bg-[#FFFAE5] border dark:border-0 dark:bg-[#2a2a2a] rounded-xl p-3 sm:p-4 shadow-md flex flex-col"
                             >
 
                                 {/* Header */}
                                 <div className="drag-handle flex justify-between items-center mb-2 cursor-grab">
 
-                                    <span className="text-white text-sm font-medium">
+                                    <span className="dark:text-white text-sm font-medium">
                                         {chart.title || "Chart"}
                                     </span>
 
@@ -137,7 +137,7 @@ const AnalyticsPage = () => {
 
                                 </div>
 
-                                <hr className="my-2 border-white/20" />
+                                <hr className="my-2 border-black dark:border-white/20" />
 
                                 {/* Chart */}
                                 <div className="flex-1 w-full">
@@ -179,7 +179,7 @@ const AnalyticsPage = () => {
 
                         </div>
 
-                        <ChartBuilder onCreate={createChart} />
+                        <ChartBuilder setShowBuilder={setShowBuilder} onCreate={createChart} />
 
                     </div>
 

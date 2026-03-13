@@ -8,8 +8,9 @@ import { LuCalendar } from "react-icons/lu";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import SortTask from './SortTask';
+import { FiTrash2 } from "react-icons/fi";
 
-const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAddModal, bodyHeight = "h-60" }) => {
+const TaskTable = ({ tasks, toggleComplete, deleteTask, tableFilter, setTableFilter, openAddModal, bodyHeight = "h-60" }) => {
 
 
     const [statusFilter, setStatusFilter] = useState("all");
@@ -57,6 +58,8 @@ const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAdd
         return 0;
 
     });
+
+    console.log(deleteTask);
 
 
     return (
@@ -115,7 +118,7 @@ const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAdd
                     </button>
 
                 </div>
-                
+
 
                 <SortTask categoryFilter={categoryFilter} setCategoryFilter={setCategoryFilter} priorityFilter={priorityFilter} setPriorityFilter={setPriorityFilter} sortBy={sortBy} setSortBy={setSortBy} />
 
@@ -155,7 +158,7 @@ const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAdd
                                 </div>
                             </th>
 
-                            <th className="px-4 py-3 font-normal">
+                            <th className="px-5 py-3 font-normal">
                                 <div className="flex items-center gap-3">
                                     <MdLowPriority size={16} />
                                     <span>Priority</span>
@@ -176,6 +179,10 @@ const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAdd
                                 </div>
                             </th>
 
+                            <th className="px-4 py-3 font-normal text-center">
+                                Action
+                            </th>
+
                         </tr>
                     </thead>
                 </table>
@@ -189,7 +196,7 @@ const TaskTable = ({ tasks, toggleComplete, tableFilter, setTableFilter, openAdd
                             {sortedTasks.length === 0 ? (
 
                                 <tr>
-                                    <td colSpan="6" className="text-center py-10 text-gray-400">
+                                    <td colSpan="7" className="text-center py-10 text-gray-400">
                                         There is no such Task
                                     </td>
                                 </tr>
@@ -226,7 +233,7 @@ ${task.is_done ? "line-through text-gray-400" : ""}
                                         </td>
 
                                         {/* PRIORITY */}
-                                        <td className="px-4 py-3">
+                                        <td className="px-7 py-3">
                                             <span className={`px-3 py-1 text-xs rounded-full
 ${task.priority === "high" && "bg-red-100 text-red-600"}
 ${task.priority === "medium" && "bg-yellow-100 text-yellow-700"}
@@ -237,7 +244,7 @@ ${task.priority === "low" && "bg-green-100 text-green-600"}
                                         </td>
 
                                         {/* STATUS */}
-                                        <td className="px-4 py-3">
+                                        <td className="px-12 text-center py-3">
                                             <span className={`px-3 py-1 text-xs rounded-full
 ${task.status === "completed" && "bg-green-100 text-green-600"}
 ${task.status === "in_progress" && "bg-purple-100 text-purple-600"}
@@ -248,10 +255,19 @@ ${task.status === "todo" && "bg-gray-200 text-gray-600"}
                                         </td>
 
                                         {/* DUE DATE */}
-                                        <td className="px-4 py-3">
+                                        <td className="px-10 py-3">
                                             {task.due_date
                                                 ? new Date(task.due_date).toLocaleDateString()
                                                 : "-"}
+                                        </td>
+
+                                        <td className="px-22 py-3 text-center">
+                                            <button
+                                                onClick={() => deleteTask(task._id)}
+                                                className="text-red-500 hover:text-red-700 transition"
+                                            >
+                                                <FiTrash2 size={18} />
+                                            </button>
                                         </td>
 
                                     </tr>
