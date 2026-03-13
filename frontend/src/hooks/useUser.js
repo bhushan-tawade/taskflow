@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { getCurrentUserAPI, updateUserAPI, deleteUserAPI } from "../services/userService";
+import { getCurrentUserAPI, updateUserAPI, deleteUserAPI, changePasswordAPI } from "../services/userService";
 
 const useUser = () => {
 
@@ -30,16 +30,29 @@ const useUser = () => {
     fetchUser();
   }, []);
 
-  const updateUser = async (data) => {
+  const updateProfile = async (data) => {
     try {
-
       const res = await updateUserAPI(data);
       setUser(res.data);
       toast.success("Profile updated");
-
     } catch {
-
       toast.error("Update failed");
+    }
+  };
+
+
+  const changePassword = async (data) => {
+    try {
+
+      await changePasswordAPI(data);
+      toast.success("Password changed successfully");
+      return true;
+
+    } catch (err) {
+
+      const message = err.response?.data?.message || "Failed to change password";
+      toast.error(message);
+      return false;
 
     }
   };
@@ -51,7 +64,7 @@ const useUser = () => {
       toast.success("Account deleted");
 
       localStorage.removeItem("token");
-      window.location.href = "/login";
+      window.location.href = "/";
 
     } catch {
 
@@ -64,7 +77,8 @@ const useUser = () => {
     user,
     loading,
     fetchUser,
-    updateUser,
+    updateProfile,
+    changePassword,
     deleteUser
   };
 };

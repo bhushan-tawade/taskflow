@@ -12,6 +12,7 @@ import TaskAnalytics from "../components/TaskAnalytics"
 import AddTask from "../components/AddTask"
 import TaskTable from "../components/TaskTable"
 import MyCalendar from "../components/MyCalendar"
+import DueToday from "../components/DueToday"
 
 function Dashboard() {
 
@@ -109,7 +110,7 @@ function Dashboard() {
                 />
 
                 {/* TASK TABLE */}
-                <div className="bg-[#FFFFFF] border dark:bg-[#2E2E2E]  w-full rounded-4xl p-4">
+                <div className="bg-[#FFFFFF] border dark:border-0 dark:bg-[#2E2E2E]  w-full rounded-4xl p-4">
                     <TaskTable
                         tasks={tableFilteredTasks}
                         toggleComplete={toggleComplete}
@@ -130,17 +131,20 @@ function Dashboard() {
             </div>
 
             {/* RIGHT PANEL */}
-            <div className="w-[28%] max-lg:w-[95%] max-md:flex-col flex flex-col items-center justify-around gap-4 max-lg:flex-row">
+            <div className="w-[35%] max-lg:w-[95%] max-md:flex-col flex flex-col items-center justify-around gap-4 max-lg:flex-row">
                 <h1 className="mt-1 text-[#10162F] dark:text-[#ffff90] text-5xl bricolage-grotesque max-lg:hidden">Taskflow</h1>
-                <div className="w-full max-lg:pt-10 bg-[#FFFFFF] border dark:bg-[#2E2E2E] rounded-4xl h-70 max-lg:h-90">
+                <div className="w-full max-lg:pt-10 bg-[#FFFFFF] border dark:border-0 dark:bg-[#2E2E2E] rounded-4xl h-70 max-lg:h-90">
                     <TaskAnalytics
                         completionRate={completionRate}
                         chartData={chartData}
                         COLORS={COLORS}
                     />
                 </div>
-                <div className="w-full p-4 bg-[#FFFFFF] border dark:bg-[#2E2E2E] rounded-4xl h-91">
-                    <MyCalendar />
+                <div className="w-full p-4 bg-[#FFFFFF] border dark:border-0 dark:bg-[#2E2E2E] rounded-4xl h-91">
+                    <DueToday
+                        tasks={tasks}
+                        toggleComplete={toggleComplete}
+                    />
                 </div>
             </div>
 

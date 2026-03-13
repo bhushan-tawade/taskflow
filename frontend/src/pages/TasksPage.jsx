@@ -13,6 +13,7 @@ import AddTask from '../components/AddTask'
 import RecentTask from '../components/RecentTask'
 
 import useTasks from '../hooks/useTasks'
+import CategoryView from '../components/CategoryView'
 
 const TasksPage = () => {
 
@@ -140,6 +141,10 @@ const TasksPage = () => {
                                     className={`py-3 px-2 border-b-2 cursor-pointer flex items-center gap-2 transition ease-in hover:text-[#3A10E5] dark:hover:text-[#FFF07A] ${view === 'table' && "text-[#3A10E5] dark:text-[#FFF07A]"}`}>
                                     <FaTable size={20} /> Table view
                                 </button>
+                                <button onClick={() => setView('category')}
+                                    className={`py-3 px-2 border-b-2 cursor-pointer flex items-center gap-2 transition ease-in hover:text-[#3A10E5] dark:hover:text-[#FFF07A] ${view === 'category' && "text-[#3A10E5] dark:text-[#FFF07A]"}`}>
+                                    <FaTable size={20} /> Category view
+                                </button>
                             </div>
                         </div>
 
@@ -185,7 +190,7 @@ const TasksPage = () => {
 
                             </div>
 
-                        ) : (
+                        ) : view === 'table' ? (
                             // TABLE VIEW
                             <div className="bg-[#fff] border dark:border-0 dark:bg-[#2E2E2E] w-full rounded-4xl p-4">
                                 <TaskTable
@@ -195,6 +200,13 @@ const TasksPage = () => {
                                     setTableFilter={setTableFilter}
                                     openAddModal={() => setIsAddModalOpen(true)}
                                     bodyHeight="h-[27vh] lg:h-[55vh]"
+                                />
+                            </div>
+                        ) : (
+                            <div>
+                                <CategoryView
+                                    tasks={tasks}
+                                    toggleComplete={toggleComplete}
                                 />
                             </div>
                         )}

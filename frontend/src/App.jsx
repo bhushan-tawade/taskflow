@@ -8,6 +8,7 @@ import TasksPage from "./pages/TasksPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 import AnalyticsPage from "./pages/AnalyticsPage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
 
@@ -48,6 +49,17 @@ function App() {
             <ProtectedRoute>
               <Layout>
                 <AnalyticsPage />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <ProfilePage />
               </Layout>
             </ProtectedRoute>
           }

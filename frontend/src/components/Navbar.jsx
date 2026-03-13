@@ -17,10 +17,12 @@ function Navbar({ logout }) {
         <div className="bg-[#FFD300] border dark:border-none dark:bg-[#FFF07A] h-[96vh] ml-4 mt-4 shadow px-4 py-6 flex flex-col justify-between items-center rounded-2xl">
 
             {/* APP NAME */}
+            <Link to="/profile">
             <div className="flex items-center gap-2 text-black">
                 <FaUserCircle size={36} />
 
             </div>
+            </Link>
 
             {/* USER SECTION */}
 

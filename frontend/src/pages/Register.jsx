@@ -13,28 +13,32 @@ function Register() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    e.preventDefault();
+  try {
+    // Call backend register endpoint
+    const res = await API.post("/auth/register", {
+      name,
+      email,
+      password
+    });
 
-    try {
+    // Save token to localStorage (auto-login)
+    localStorage.setItem("token", res.data.token);
 
-      await API.post("/auth/register", {
-        name,
-        email,
-        password
-      });
+    // Optional: you can also save user info if needed
+    // localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      alert("Registration successful!");
+    // Show success toast
+    alert("Registration successful!");
 
-      navigate("/");
+    // Redirect to dashboard
+    navigate("/dashboard");
 
-    } catch (error) {
-
-      alert(error.response?.data?.message || "Registration failed");
-
-    }
-
-  };
+  } catch (error) {
+    alert(error.response?.data?.message || "Registration failed");
+  }
+};
 
   return (
 

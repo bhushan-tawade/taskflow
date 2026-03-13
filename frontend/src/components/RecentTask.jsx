@@ -11,7 +11,7 @@ const RecentTask = ({ recentTasks }) => {
       <p className='dark:text-[#BCBBBC] pb-3 px-1.5 flex items-center gap-2'><LuFolders size={20} /> Recent Tasks</p>
       <hr className="dark:border-white/20 mb-4 bg-[#FFFAE5]" />
       {recentTasks.length ? (
-        <div className='bg-[#FFFAE5] dark:bg-transparent rounded-3xl' style={{ height: '260px', position: 'relative' }}>
+        <div className=' dark:bg-transparent rounded-3xl' style={{ height: '260px', position: 'relative' }}>
         <Carousel
           baseWidth={300}
           autoplay={true}
