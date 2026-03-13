@@ -4,6 +4,7 @@ import { RiArrowRightSLine } from "react-icons/ri"
 import { toast } from "react-toastify"
 
 import useTasks from "../hooks/useTasks"
+import useUser from "../hooks/useUser";
 
 import TaskCard from "../components/TaskCard"
 import TaskStat from "../components/TaskStat"
@@ -26,6 +27,8 @@ function Dashboard() {
         toggleComplete, updateTask,
         totalTasks, completedTasks, pendingTasks, overdueTasks
     } = useTasks()
+
+    const { user } = useUser();
 
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isAddModalOpen, setIsAddModalOpen] = useState(false)
@@ -53,14 +56,25 @@ function Dashboard() {
 
     const handleUpdateTask = () => {
         updateTask(selectedTask, () => setIsModalOpen(false))
-        
+
     }
 
 
     const now = new Date();
 
-    const month = now.toLocaleString("default", { month: "long" });
-    const year = now.getFullYear();
+    const hour = new Date().getHours();
+
+    let greeting = "Good Morning";
+
+    if (hour >= 12 && hour < 17) {
+        greeting = "Good Afternoon";
+    } else if (hour >= 17 && hour < 21) {
+        greeting = "Good Evening";
+    } else if (hour >= 21 || hour < 5) {
+        greeting = "Good Night";
+    }
+
+    const firstName = user?.name?.split(" ")[0];
 
     return (
         <div className="h-[98vh]  bg-[#FFF0E5] dark:bg-[#1E1E1E] p-3 flex max-lg:flex-col max-lg:items-center justify-around gap-4">
@@ -76,14 +90,14 @@ function Dashboard() {
 
                 <hr className="dark:border-white/20" />
 
-                <div className="px-4 flex items-end gap-1 text-[#10162F] font-semibold dark:text-white my-5">
-                    <h1 className="text-7xl">
-                       {month}
-                        </h1>
-                        <h2>
-                            {year}
-                        </h2>
-                    
+                <div className="px-4 flex items-end gap-1 text-[#10162F]  dark:text-white my-8">
+                    <h1 className="text-6xl">
+                        {greeting}
+                    </h1>
+                    <h2 className="text-4xl">
+                        , {firstName}
+                    </h2>
+
                 </div>
 
                 {/* TASK STATISTICS */}
