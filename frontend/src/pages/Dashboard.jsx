@@ -92,10 +92,10 @@ function Dashboard() {
                 <hr className="dark:border-white/20" />
 
                 <div className="px-4 flex items-end gap-1 text-[#10162F]  dark:text-white my-8">
-                    <h1 className="text-6xl">
+                    <h1 className="text-6xl font-bold dark:font-normal">
                         {greeting}
                     </h1>
-                    <h2 className="text-4xl">
+                    <h2 className="text-4xl font-semibold dark:font-normal">
                         , {firstName}
                     </h2>
 

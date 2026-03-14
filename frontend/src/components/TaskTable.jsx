@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { CgFileDocument } from "react-icons/cg";
 import { LuText } from "react-icons/lu";
-import { TbCategoryFilled } from "react-icons/tb";
+import { TbCategoryFilled, TbFilterEdit } from "react-icons/tb";
 import { MdLowPriority } from "react-icons/md";
 import { RiLoader2Fill } from "react-icons/ri";
 import { LuCalendar } from "react-icons/lu";
@@ -9,6 +9,7 @@ import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import SortTask from './SortTask';
 import { FiTrash2 } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 
 const TaskTable = ({ tasks, toggleComplete, deleteTask, tableFilter, setTableFilter, openAddModal, bodyHeight = "h-60" }) => {
 
@@ -16,12 +17,15 @@ const TaskTable = ({ tasks, toggleComplete, deleteTask, tableFilter, setTableFil
     const [statusFilter, setStatusFilter] = useState("all");
     const [categoryFilter, setCategoryFilter] = useState("all");
     const [priorityFilter, setPriorityFilter] = useState("all");
+    const [isSortOpen, setIsSortOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
 
     const [sortBy, setSortBy] = useState("newest");
 
     const filteredTasks = tasks.filter((task) => {
 
-
+        const matchSearch =
+            task.title.toLowerCase().includes(searchQuery.toLowerCase());
 
         const matchPriority =
             priorityFilter === "all" || task.priority === priorityFilter;
@@ -32,7 +36,8 @@ const TaskTable = ({ tasks, toggleComplete, deleteTask, tableFilter, setTableFil
         const matchStatus =
             statusFilter === "all" || task.status === statusFilter;
 
-        return matchPriority && matchCategory && matchStatus;
+        return matchSearch && matchPriority && matchCategory && matchStatus;
+
     });
 
 
@@ -84,50 +89,41 @@ const TaskTable = ({ tasks, toggleComplete, deleteTask, tableFilter, setTableFil
                     </div>
                 </Link>
 
-                {/* Sorting */}
-                <div className='bg-[#FFFAE5] border border-black dark:border-0 dark:bg-black/20 rounded-2xl px-4 flex flex-wrap gap-4 text-black/50 dark:text-white/30'>
+                {/* Search Task Bar & Sorting & Add Task btn */}
 
+                <div className='flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap gap-3 w-full lg:w-auto'>
+
+                    {/* Search */}
+                    <div className="relative w-full sm:w-[250px] lg:w-64">
+                        <FiSearch className="absolute left-3 top-3 text-gray-400" />
+
+                        <input
+                            type="text"
+                            placeholder="Search tasks..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="border pl-10 pr-3 py-2 rounded-xl w-full dark:bg-[#2E2E2E] dark:text-white dark:border-white/20 outline-none"
+                        />
+                    </div>
+
+                    {/* Sort Button */}
                     <button
-                        onClick={() => setTableFilter("all")}
-                        className={`py-2 px-2 border-b-2 cursor-pointer ${tableFilter === "all"
-                            ? "text-[#10162F]  dark:text-[#FFFF90] dark:border-[#FFFF90]"
-                            : "border-transparent dark:hover:border-white/40"
-                            }`}
+                        onClick={() => setIsSortOpen(true)}
+                        className="border dark:text-white/80 dark:border-white/20 flex items-center justify-center gap-2 px-4 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-[#3a3a3a] transition w-full sm:w-auto"
                     >
-                        All Tasks
+                        <TbFilterEdit size={18} />
+                        <span>Sort / Filter</span>
                     </button>
 
+                    {/* Add Task */}
                     <button
-                        onClick={() => setTableFilter("done")}
-                        className={`py-2 px-2 border-b-2 cursor-pointer ${tableFilter === "done"
-                            ? "text-[#10162F] dark:text-[#FFFF90] dark:border-[#FFFF90]"
-                            : "border-transparent hover:border-white/40"
-                            }`}
+                        onClick={openAddModal}
+                        className='bg-[#FFD300] dark:bg-[#FFFF90] px-4 py-2 rounded-xl font-semibold hover:scale-105 transition w-full sm:w-auto'
                     >
-                        Done
-                    </button>
-
-                    <button
-                        onClick={() => setTableFilter("due")}
-                        className={`py-2 px-2 border-b-2 cursor-pointer ${tableFilter === "due"
-                            ? "text-[#10162F]  dark:text-[#FFFF90] dark:border-[#FFFF90]"
-                            : "border-transparent hover:border-white/40"
-                            }`}
-                    >
-                        Due Tasks
+                        Add Task
                     </button>
 
                 </div>
-
-
-                <SortTask categoryFilter={categoryFilter} setCategoryFilter={setCategoryFilter} priorityFilter={priorityFilter} setPriorityFilter={setPriorityFilter} sortBy={sortBy} setSortBy={setSortBy} />
-
-
-                <button
-                    onClick={openAddModal}
-                    className='bg-[#FFD300] border dark:border-0 dark:bg-[#FFFF90] px-4 py-2 rounded-xl font-semibold hover:scale-105 transition w-full lg:w-auto'
-                >    Add Task
-                </button>
             </div>
 
             <hr className='border-white/10' />
@@ -282,6 +278,42 @@ ${task.status === "todo" && "bg-gray-200 text-gray-600"}
                 </div>
 
             </div>
+
+            {isSortOpen && (
+                <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+
+                    <div className="bg-white dark:bg-[#2E2E2E] p-6 rounded-2xl w-[350px]">
+
+                        <div className="flex justify-between items-center mb-4">
+                            <h2 className="text-lg font-semibold dark:text-white">
+                                Sort & Filter
+                            </h2>
+
+                            <button
+                                onClick={() => setIsSortOpen(false)}
+                                className="text-gray-400 hover:text-red-500"
+                            >
+                                ✕
+                            </button>
+                        </div>
+
+                        <SortTask
+                            tableFilter={tableFilter}
+                            setTableFilter={setTableFilter}
+                            setStatusFilter={setStatusFilter}
+                            categoryFilter={categoryFilter}
+                            setCategoryFilter={setCategoryFilter}
+                            priorityFilter={priorityFilter}
+                            setPriorityFilter={setPriorityFilter}
+                            sortBy={sortBy}
+                            setSortBy={setSortBy}
+                            onClose={() => setIsSortOpen(false)}
+                        />
+
+                    </div>
+
+                </div>
+            )}
 
         </div>
     )
