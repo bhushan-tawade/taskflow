@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { TbHome } from "react-icons/tb"
 import { RiArrowRightSLine } from "react-icons/ri"
 import { toast } from "react-toastify"
+import { useRef } from "react";
 
 import useTasks from "../hooks/useTasks"
 import useUser from "../hooks/useUser";
@@ -13,6 +14,7 @@ import AddTask from "../components/AddTask"
 import TaskTable from "../components/TaskTable"
 import MyCalendar from "../components/MyCalendar"
 import DueToday from "../components/DueToday"
+import { HiBellAlert } from "react-icons/hi2";
 
 function Dashboard() {
 
@@ -36,6 +38,8 @@ function Dashboard() {
     const [selectedTask, setSelectedTask] = useState(null)
     const [tableFilter, setTableFilter] = useState("all")
 
+    const notified = useRef(false);
+
     // CHART DATA
     const completionRate = totalTasks === 0
         ? 0
@@ -57,9 +61,7 @@ function Dashboard() {
 
     const handleUpdateTask = () => {
         updateTask(selectedTask, () => setIsModalOpen(false))
-
     }
-
 
     const now = new Date();
 
@@ -77,6 +79,76 @@ function Dashboard() {
 
     const firstName = user?.name?.split(" ")[0];
 
+    const showTodayDueNotification = (tasks) => {
+
+        if (!user) return;
+
+        const notificationsEnabled = localStorage.getItem("notificationsEnabled");
+        if (notificationsEnabled === "false") return;
+
+        const today = new Date().toDateString();
+
+        const alreadyShown = sessionStorage.getItem("todayDueNotification");
+
+        if (alreadyShown === "true") return;
+
+        const todayTasks = tasks.filter(task =>
+            !task.is_done &&
+            task.due_date &&
+            new Date(task.due_date).toDateString() === today
+        );
+
+        if (todayTasks.length === 0) return;
+
+        sessionStorage.setItem("todayDueNotification", "true");
+
+
+        toast(
+            <div className=" w-full">
+                <div className="font-semibold mb-2 flex gap-2">
+                    <HiBellAlert size={20} className="text-orange-400" />
+                    <p className="text-red-500">
+                        Tasks Due Today
+                    </p>
+                </div>
+
+                <ul className="list-disc ml-4 text-lg ">
+                    {todayTasks.map(task => (
+                        <li key={task._id}>
+                            <div className="flex items-center justify-between w-full">
+                                <p>
+                                    {task.title}
+                                </p>
+                                <span className={`px-3 py-1 text-xs rounded-full
+                                                ${task.priority === "high" && "bg-red-100 text-red-600"}
+                                                ${task.priority === "medium" && "bg-yellow-100 text-yellow-700"}
+                                                ${task.priority === "low" && "bg-green-100 text-green-600"}
+                                `}>
+                                    {task.priority}
+                                </span>
+                            </div>
+
+                        </li>
+                    ))}
+                </ul>
+            </div>,
+            {
+                autoClose: false
+            }
+        );
+
+    };
+
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+
+        if (user && tasks.length > 0) {
+            showTodayDueNotification(tasks);
+        }
+
+    }, [tasks, user]);
+
     return (
         <div className="h-[98vh]  bg-[#FFF0E5] dark:bg-[#1E1E1E] p-3 flex max-lg:flex-col max-lg:items-center justify-around gap-4">
 
@@ -91,13 +163,10 @@ function Dashboard() {
 
                 <hr className="dark:border-white/20" />
 
-                <div className="px-4 flex items-end gap-1 text-[#10162F]  dark:text-white my-8">
-                    <h1 className="text-6xl font-bold dark:font-normal">
-                        {greeting}
+                <div className="px-4 flex items-center gap-1 text-[#10162F]  dark:text-white my-10">
+                    <h1 className="text-5xl font-semibold dark:font-normal">
+                        {greeting}, {firstName} !
                     </h1>
-                    <h2 className="text-4xl font-semibold dark:font-normal">
-                        , {firstName}
-                    </h2>
 
                 </div>
 
@@ -110,7 +179,7 @@ function Dashboard() {
                 />
 
                 {/* TASK TABLE */}
-                <div className="bg-[#FFFFFF] border dark:border-0 dark:bg-[#2E2E2E]  w-full rounded-4xl p-4">
+                <div className="bg-[#FFFFFF] h-[22.5rem] border dark:border-0 dark:bg-[#2E2E2E]  w-full rounded-4xl p-4">
                     <TaskTable
                         tasks={tableFilteredTasks}
                         toggleComplete={toggleComplete}

@@ -10,7 +10,7 @@ const TaskStat = ({ totalTasks, completedTasks, pendingTasks, overdueTasks }) =>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6 mt-8">
 
             {/* Active Tasks */}
-            <div className='bg-[#634ca6] hover:border dark:border-0 rounded-2xl lg:hover:-translate-x-1 lg:hover:translate-y-1 transition-transform duration-300 ease-out'>
+            <div className='bg-[#634ca6] hover:z dark:border-0 rounded-2xl lg:hover:-translate-x-1 lg:hover:translate-y-1 transition-transform duration-300 ease-out'>
                 <div className="relative bg-[#A27FFF] border dark:border-0 p-6 md:p-8 lg:p-10 rounded-2xl shadow text-center overflow-hidden lexend
                 lg:hover:translate-x-2 lg:hover:-translate-y-2 transition-transform duration-300 ease-out">
 

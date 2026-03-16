@@ -2,6 +2,7 @@ import { useState } from "react";
 import API from "../services/api";
 import { useNavigate, Link } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import DotGrid from "../utils/DotGrid";
 
 function Login() {
 
@@ -43,9 +44,16 @@ function Login() {
 
     <div className="min-h-screen flex items-center justify-center bg-[#0f0f0f] relative overflow-hidden">
 
-      {/* Background glow */}
-      <div className="absolute w-[500px] h-[500px] bg-yellow-400/20 blur-[120px] rounded-full left-[-200px] top-[-200px]"></div>
-      <div className="absolute w-[400px] h-[400px] bg-blue-500/20 blur-[120px] rounded-full right-[-150px] bottom-[-150px]"></div>
+      <div className='w-full  h-full absolute z-0'>
+        <DotGrid
+          dotSize={4} gap={21}
+          baseColor="#222222" activeColor="#fff07a"
+          proximity={150} speedTrigger={100}
+          shockRadius={250} shockStrength={5}
+          maxSpeed={5000} resistance={750} returnDuration={1.5}
+        />
+      </div>
+
 
       {/* Login Card */}
       <form

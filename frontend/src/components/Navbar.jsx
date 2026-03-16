@@ -14,7 +14,7 @@ function Navbar({ logout }) {
 
     return (
 
-        <div className="bg-[#FFD300] border dark:border-none dark:bg-[#FFF07A] h-[96vh] ml-4 mt-4 shadow px-4 py-6 flex flex-col justify-between items-center rounded-2xl">
+        <div className="bg-[#FCDE70] border dark:border-none dark:bg-[#FFF07A] h-[96vh] ml-4 mt-4 shadow px-4 py-6 flex flex-col justify-between items-center rounded-2xl">
 
             {/* APP NAME */}
             <Link to="/profile">
@@ -32,7 +32,7 @@ function Navbar({ logout }) {
                 <Link to="/dashboard">
                     <div
                         className={`p-3 rounded-2xl ${location.pathname === "/dashboard"
-                            ? "bg-[#10162F] dark:bg-black text-[#FFD300] dark:text-[#FFF07A]"
+                            ? "bg-[#10162F] dark:bg-black text-[#FCDE70] dark:text-[#FFF07A]"
                             : " text-black hover:bg-black/10"
                             }`}
                     >
@@ -43,7 +43,7 @@ function Navbar({ logout }) {
                 <Link to="/tasks">
                     <div
                         className={`p-3 rounded-2xl ${location.pathname === "/tasks"
-                                ? "bg-[#10162F] dark:bg-black text-[#FFD300] dark:text-[#FFF07A]"
+                                ? "bg-[#10162F] dark:bg-black text-[#FCDE70] dark:text-[#FFF07A]"
                                 : "text-[#10162F] dark:text-black hover:bg-black/10"
                             }`}
                     >
@@ -55,7 +55,7 @@ function Navbar({ logout }) {
                 <Link to="/analytics">
                     <div
                         className={`p-3 rounded-2xl ${location.pathname === "/analytics"
-                                ? "bg-[#10162F] dark:bg-black text-[#FFD300] dark:text-[#FFF07A]"
+                                ? "bg-[#10162F] dark:bg-black text-[#FCDE70] dark:text-[#FFF07A]"
                                 : "text-black hover:bg-black/10"
                             }`}
                     >

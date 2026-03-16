@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { RiArrowRightSLine } from "react-icons/ri"
-import { TbHome } from "react-icons/tb"
+import { TbBellRinging, TbHome } from "react-icons/tb"
 import { FiChevronRight, FiEdit2, FiEye, FiEyeOff, FiX, FiLock, FiLogOut, FiTrash2, FiMoon, FiCalendar } from "react-icons/fi"
 
 import useUser from "../hooks/useUser"
@@ -318,6 +318,16 @@ const ProfilePage = () => {
         localStorage.getItem("defaultDueDate") || "tomorrow"
     )
 
+    const [notificationsEnabled, setNotificationsEnabled] = useState(
+        localStorage.getItem("notificationsEnabled") !== "false"
+    );
+
+    const toggleNotifications = () => {
+        const newValue = !notificationsEnabled;
+        setNotificationsEnabled(newValue);
+        localStorage.setItem("notificationsEnabled", newValue);
+    };
+
     const changeDefaultDueDate = () => {
         const newValue = defaultDueDate === "tomorrow" ? "none" : "tomorrow"
         setDefaultDueDate(newValue)
@@ -446,7 +456,7 @@ const ProfilePage = () => {
                     {/* Default Due Date */}
                     <div
                         onClick={changeDefaultDueDate}
-                        className="flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5"
+                        className="flex items-center justify-between px-5 py-4 cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 border-b dark:border-white/10"
                     >
                         <div className="flex items-center gap-3">
                             <div className="w-8 h-8 rounded-full dark:text-white/50 bg-gray-200 dark:bg-[#3a3a3a] flex items-center justify-center">
@@ -466,6 +476,38 @@ const ProfilePage = () => {
                             <span className="capitalize">{defaultDueDate}</span>
                             <FiChevronRight />
                         </div>
+                    </div>
+
+                    {/* Notifications */}
+                    <div className="flex items-center justify-between px-5 py-4 ">
+
+                        <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-full dark:text-white/50 bg-gray-200 dark:bg-[#3a3a3a] flex items-center justify-center">
+                                <TbBellRinging size={16}/>
+                            </div>
+
+                            <div>
+                                <p className="text-[#10162F] dark:text-white font-medium">
+                                    Task Notifications
+                                </p>
+
+                                <p className="text-[#10162F]/60 dark:text-white/40 text-xs">
+                                    Notify about today's due tasks
+                                </p>
+                            </div>
+                        </div>
+
+                        <button
+                            onClick={toggleNotifications}
+                            className={`relative w-12 h-6 rounded-full transition ${notificationsEnabled ? "bg-yellow-400" : "bg-gray-400"
+                                }`}
+                        >
+                            <span
+                                className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition ${notificationsEnabled ? "translate-x-6" : ""
+                                    }`}
+                            />
+                        </button>
+
                     </div>
                 </div>
 

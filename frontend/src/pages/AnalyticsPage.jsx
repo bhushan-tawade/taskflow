@@ -68,7 +68,7 @@ const AnalyticsPage = () => {
 
 
             {/* Dashboard */}
-            <div className="flex-1 p-2  mt-3 overflow-auto relative bg-white bg-[radial-gradient(#10162F_1.5px,#ffffff_1.5px)] bg-[size:20px_20px] border rounded-xl
+            <div className="flex-1 p-2  mt-3 overflow-auto relative bg-white bg-[radial-gradient(#CBCBCB_1.5px,#ffffff_1.5px)] bg-[size:20px_20px] border rounded-xl
                             dark:border-0 dark:bg-[#1e1e1e] dark:bg-[radial-gradient(#57585c_0.5px,#1e1e1e_1.5px)] dark:bg-[size:20px_20px]">
 
                 {charts.length === 0 && (

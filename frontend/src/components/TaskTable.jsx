@@ -240,7 +240,7 @@ ${task.priority === "low" && "bg-green-100 text-green-600"}
                                         </td>
 
                                         {/* STATUS */}
-                                        <td className="px-12 text-center py-3">
+                                        <td className="px-9 text-center py-3">
                                             <span className={`px-3 py-1 text-xs rounded-full
 ${task.status === "completed" && "bg-green-100 text-green-600"}
 ${task.status === "in_progress" && "bg-purple-100 text-purple-600"}

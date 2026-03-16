@@ -1,5 +1,6 @@
 import { FiCheckSquare } from "react-icons/fi"
 import { TbCalendarDue } from "react-icons/tb";
+import { IoIosArrowDown } from "react-icons/io";
 
 function DueToday({ tasks, toggleComplete }) {
 
@@ -52,7 +53,7 @@ function DueToday({ tasks, toggleComplete }) {
             <hr className="mb-2 dark:border-white/10" />
 
             {/* TASK LIST */}
-            <div className="flex flex-col gap-3 mt-2 overflow-y-auto max-h-60 pr-1">
+            <div className="flex flex-col gap-3 mt-2 overflow-y-auto no-scrollbar max-h-60 pr-1">
 
                 {dueTasks.length === 0 && (
                     <p className="text-sm text-center text-gray-400">
@@ -95,6 +96,18 @@ function DueToday({ tasks, toggleComplete }) {
                     )
                 })}
             </div>
+
+            {dueTasks.length > 6 && (
+
+                <div className="w-full dark:text-white/50 flex items-center justify-center">
+
+                    <IoIosArrowDown size={20} />
+
+                </div>
+
+            )}
+
+
         </div>
     )
 }

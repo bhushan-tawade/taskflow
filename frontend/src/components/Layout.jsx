@@ -4,6 +4,7 @@ function Layout({ children }) {
 
     const logout = () => {
         localStorage.removeItem("token");
+        sessionStorage.removeItem("todayDueNotification");
         window.location.href = "/";
     };
 

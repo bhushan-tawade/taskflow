@@ -7,18 +7,7 @@ import { FaPersonRunning } from "react-icons/fa6";
 
 const TaskCard = ({ task, toggleComplete, deleteTask, handleEditClick, toggleInProgress }) => {
 
-    const today = new Date();
-
-    const isOverdue =
-        task.due_date &&
-        new Date(task.due_date) < today &&
-        !task.is_done;
-
-    const dueSoon =
-        task.due_date &&
-        new Date(task.due_date) > today &&
-        new Date(task.due_date) - today < 24 * 60 * 60 * 1000 &&
-        !task.is_done;
+    
 
     const priorityColor = {
         high: "text-red-500",
@@ -85,85 +74,15 @@ const TaskCard = ({ task, toggleComplete, deleteTask, handleEditClick, toggleInP
 
             {
                 task.status != 'in_progress' && task.status != 'completed' && (
-            
-            <button
-                onClick={() => toggleInProgress(task)}
-                className={`w-full mt-3 font-semibold shadow-md cursor-pointer border border-black dark:border-0 bg-white rounded-xl p-2 transition hover:scale-102 ${task.status != 'completed' ? 'text-green-400' : 'text-red-400'}`}
-            >
-                Mark in Progress
-            </button>)
-}
 
-            {/* <div>
+                    <button
+                        onClick={() => toggleInProgress(task)}
+                        className={`w-full mt-3 font-semibold shadow-md cursor-pointer border border-black dark:border-0 bg-white rounded-xl p-2 transition hover:scale-102 ${task.status != 'completed' ? 'text-green-400' : 'text-red-400'}`}
+                    >
+                        Mark in Progress
+                    </button>)
+            }
 
-                <h2
-                    className={`text-xl font-semibold ${task.is_done && "line-through text-gray-400"}`}
-                >
-                    {task.title}
-                </h2>
-
-                <p className="text-gray-600">
-                    {task.description}
-                </p>
-
-                <p className="text-sm text-gray-500">
-                    Category: {task.category}
-                </p>
-
-                <p className={priorityColor[task.priority]}>
-                    Priority: {task.priority}
-                </p>
-
-                <p className="text-sm text-gray-500">
-                    Status: {task.status}
-                </p>
-
-                <p className="text-sm text-gray-500">
-                    Due: {task.due_date
-                        ? new Date(task.due_date).toLocaleDateString()
-                        : "No date"}
-                </p>
-
-                {isOverdue && (
-                    <p className="text-red-500 text-sm font-semibold">
-                        Overdue
-                    </p>
-                )}
-
-                {dueSoon && (
-                    <p className="text-orange-500 text-sm font-semibold">
-                        Due Soon ⏰
-                    </p>
-                )}
-
-            </div>
-
-            <div className="flex flex-col gap-2">
-
-                <button
-                    onClick={() => toggleComplete(task)}
-                    className="bg-green-500 text-white px-3 py-1 rounded"
-                >
-                    ✓
-                </button>
-
-                <button
-                    onClick={() => deleteTask(task._id)}
-                    className="bg-red-500 text-white px-3 py-1 rounded"
-                >
-                    Delete
-                </button>
-
-                <button
-                    onClick={() =>
-                        handleEditClick(task)
-                    }
-                    className="bg-blue-500 text-white px-3 py-1 rounded"
-                >
-                    Edit
-                </button>
-
-            </div> */}
 
         </div>
     )

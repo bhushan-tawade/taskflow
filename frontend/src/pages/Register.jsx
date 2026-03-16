@@ -2,6 +2,7 @@ import { useState } from "react";
 import API from "../services/api";
 import { useNavigate, Link } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import DotGrid from "../utils/DotGrid";
 
 function Register() {
 
@@ -13,41 +14,46 @@ function Register() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    // Call backend register endpoint
-    const res = await API.post("/auth/register", {
-      name,
-      email,
-      password
-    });
+    try {
+      // Call backend register endpoint
+      const res = await API.post("/auth/register", {
+        name,
+        email,
+        password
+      });
 
-    // Save token to localStorage (auto-login)
-    localStorage.setItem("token", res.data.token);
+      // Save token to localStorage (auto-login)
+      localStorage.setItem("token", res.data.token);
 
-    // Optional: you can also save user info if needed
-    // localStorage.setItem("user", JSON.stringify(res.data.user));
+      // Optional: you can also save user info if needed
+      // localStorage.setItem("user", JSON.stringify(res.data.user));
 
-    // Show success toast
-    alert("Registration successful!");
+      // Show success toast
+      alert("Registration successful!");
 
-    // Redirect to dashboard
-    navigate("/dashboard");
+      // Redirect to dashboard
+      navigate("/dashboard");
 
-  } catch (error) {
-    alert(error.response?.data?.message || "Registration failed");
-  }
-};
+    } catch (error) {
+      alert(error.response?.data?.message || "Registration failed");
+    }
+  };
 
   return (
 
     <div className="min-h-screen flex items-center justify-center bg-[#0f0f0f] relative overflow-hidden">
 
-      {/* Background glow */}
-      <div className="absolute w-[500px] h-[500px] bg-yellow-400/20 blur-[120px] rounded-full left-[-200px] top-[-200px]"></div>
-      <div className="absolute w-[400px] h-[400px] bg-blue-500/20 blur-[120px] rounded-full right-[-150px] bottom-[-150px]"></div>
-
+      <div className='w-full  h-full absolute z-0'>
+        <DotGrid
+          dotSize={4} gap={21}
+          baseColor="#222222" activeColor="#fff07a"
+          proximity={150} speedTrigger={100}
+          shockRadius={250} shockStrength={5}
+          maxSpeed={5000} resistance={750} returnDuration={1.5}
+        />
+      </div>
       {/* Register Card */}
       <form
         onSubmit={handleSubmit}
@@ -99,32 +105,32 @@ function Register() {
 
         {/* Password */}
         <div className="mb-6">
-        
-                  <label className="text-white/70 text-sm">
-                    Password
-                  </label>
-        
-                  <div className="flex p-3  items-center justify-between bg-[#2a2a2a] border border-white/10 text-white rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500/40 transition">
-        
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Enter your password"
-                      className="w-full   outline-none "
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-        
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className=" text-white/40 hover:text-white text-sm"
-                    >
-                      {showPassword ? <AiOutlineEyeInvisible size={26}/> : <AiOutlineEye size={26}/>}
-                    </button>
-        
-                  </div>
-        
-                </div>
+
+          <label className="text-white/70 text-sm">
+            Password
+          </label>
+
+          <div className="flex p-3  items-center justify-between bg-[#2a2a2a] border border-white/10 text-white rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-500/40 transition">
+
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter your password"
+              className="w-full   outline-none "
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className=" text-white/40 hover:text-white text-sm"
+            >
+              {showPassword ? <AiOutlineEyeInvisible size={26} /> : <AiOutlineEye size={26} />}
+            </button>
+
+          </div>
+
+        </div>
 
         {/* Register Button */}
         <button
