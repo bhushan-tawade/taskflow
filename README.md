@@ -72,7 +72,7 @@ track productivity in a clean dashboard.
 
 ### 1. Clone the Repository
 
-    git clone https://github.com/your-username/taskflow.git
+    git clone https://github.com/bhushan-tawade/taskflow.git
     cd taskflow
 
 ### 2. Install Backend Dependencies
